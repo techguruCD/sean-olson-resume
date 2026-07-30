@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sean Thomas Olson — Fashion Designer &amp; Creative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --black: #0d0d0d;
+    --yellow: #f5c400;
+    --yellow-dim: #c49a00;
+    --yellow-pale: #fdf3c0;
+    --white: #f7f7f5;
+    --gray: #1e1e1e;
+    --gray-mid: #2e2e2e;
+    --gray-light: #888;
+    --border: 1px solid #2e2e2e;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(13, 13, 13, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #1e1e1e;
+    padding: 0 48px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    color: var(--yellow);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--yellow);
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 80px 80px;
+    gap: 64px;
+    border-bottom: var(--border);
+  }
+
+  .hero-text {
+    max-width: 580px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 24px;
+  }
+
+  .hero-name {
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .hero-name span {
+    color: var(--yellow);
+  }
+
+  .hero-title {
+    font-size: clamp(18px, 2.2vw, 26px);
+    font-weight: 300;
+    color: var(--gray-light);
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 48px;
+    max-width: 480px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--yellow);
+    color: var(--black);
+    padding: 14px 32px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: #ffd000;
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    border: 1px solid #3a3a3a;
+    color: var(--gray-light);
+    padding: 14px 32px;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--yellow);
+    color: var(--yellow);
+  }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .profile-wrapper {
+    position: relative;
+    width: 280px;
+    height: 280px;
+  }
+
+  .profile-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 2px solid var(--yellow);
+    opacity: 0.4;
+  }
+
+  .profile-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: -16px;
+    border: 1px solid var(--yellow);
+    opacity: 0.15;
+  }
+
+  .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%);
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #1e1e1e;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .stat-item {
+    background: var(--black);
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'Space Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--yellow);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+  }
+
+  section {
+    padding: 96px 80px;
+    border-bottom: var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+
+  .section-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    white-space: nowrap;
+  }
+
+  .section-title {
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--white);
+  }
+
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: #1e1e1e;
+    margin-left: 16px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: #bbb;
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.85;
+  }
+
+  .about-text p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .about-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .info-card {
+    background: var(--gray);
+    border-left: 3px solid var(--yellow);
+    padding: 24px;
+  }
+
+  .info-card-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--yellow-dim);
+    margin-bottom: 8px;
+  }
+
+  .info-card-value {
+    font-size: 15px;
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .info-card-value a:hover {
+    color: var(--yellow);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: #1a1a1a;
+  }
+
+  .skill-group {
+    background: var(--black);
+    padding: 40px;
+  }
+
+  .skill-group-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #1e1e1e;
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-tag {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    color: #ccc;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .skill-tag:hover {
+    border-color: var(--yellow);
+    color: var(--yellow);
+  }
+
+  .skill-tag.highlight {
+    background: rgba(245, 196, 0, 0.08);
+    border-color: rgba(245, 196, 0, 0.3);
+    color: var(--yellow);
+  }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: #1a1a1a;
+  }
+
+  .exp-item {
+    background: var(--black);
+    padding: 44px 48px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    transition: background 0.2s;
+  }
+
+  .exp-item:hover {
+    background: #111;
+  }
+
+  .exp-meta {
+    border-right: 1px solid #1e1e1e;
+    padding-right: 48px;
+  }
+
+  .exp-period {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--yellow);
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .exp-company {
+    font-size: 14px;
+    color: var(--gray-light);
+    font-weight: 500;
+  }
+
+  .exp-role {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .exp-desc {
+    font-size: 15px;
+    color: #999;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .exp-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--yellow-dim);
+    background: rgba(245, 196, 0, 0.06);
+    border: 1px solid rgba(245, 196, 0, 0.15);
+    padding: 3px 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: #1a1a1a;
+  }
+
+  .project-card {
+    background: var(--black);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: background 0.2s;
+  }
+
+  .project-card:hover {
+    background: #0f0f0f;
+  }
+
+  .project-type {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--yellow);
+  }
+
+  .project-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.75;
+    flex: 1;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 16px;
+    border-top: 1px solid #1a1a1a;
+  }
+
+  .project-tech {
+    font-size: 12px;
+    color: #666;
+    background: #111;
+    padding: 3px 10px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .education-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: #1a1a1a;
+  }
+
+  .edu-card {
+    background: var(--black);
+    padding: 48px;
+  }
+
+  .edu-year {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--yellow);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .edu-degree {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .edu-school {
+    font-size: 14px;
+    color: var(--gray-light);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .edu-desc {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.75;
+  }
+
+  .contact-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+
+  .contact-intro {
+    font-size: 16px;
+    color: #aaa;
+    line-height: 1.85;
+    margin-bottom: 40px;
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: #1a1a1a;
+  }
+
+  .contact-row {
+    background: var(--black);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: background 0.2s;
+  }
+
+  .contact-row:hover {
+    background: #111;
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(245, 196, 0, 0.1);
+    border: 1px solid rgba(245, 196, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--yellow);
+  }
+
+  .contact-detail-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #555;
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 2px;
+  }
+
+  .contact-detail-value {
+    font-size: 15px;
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .contact-detail-value a {
+    transition: color 0.2s;
+  }
+
+  .contact-detail-value a:hover {
+    color: var(--yellow);
+  }
+
+  .map-container {
+    position: relative;
+    height: 100%;
+    min-height: 380px;
+    background: #111;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #1e1e1e;
+  }
+
+  .map-container:hover .map-overlay {
+    opacity: 1;
+  }
+
+  .map-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(80%) invert(90%) sepia(10%) brightness(0.85) contrast(1.1);
+    pointer-events: none;
+    display: block;
+  }
+
+  .map-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(245, 196, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+
+  .map-open-label {
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+  }
+
+  .map-pin-label {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: var(--black);
+    border: 1px solid #2a2a2a;
+    padding: 10px 16px;
+    pointer-events: none;
+  }
+
+  .map-pin-address {
+    font-size: 12px;
+    color: #aaa;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .map-pin-address strong {
+    color: var(--yellow);
+    display: block;
+    margin-bottom: 2px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  footer {
+    background: #080808;
+    padding: 48px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #1a1a1a;
+  }
+
+  .footer-left {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: #444;
+  }
+
+  .footer-left span {
+    color: var(--yellow);
+  }
+
+  .footer-right {
+    font-size: 13px;
+    color: #333;
+    letter-spacing: 0.06em;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .yellow-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--yellow) 0%, transparent 100%);
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    opacity: 0.4;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { gap: 20px; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 100px 32px 64px;
+      text-align: center;
+    }
+
+    .hero-visual { order: -1; }
+    .hero-cta { justify-content: center; }
+
+    section { padding: 64px 32px; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; }
+    .exp-meta { border-right: none; padding-right: 0; border-bottom: 1px solid #1e1e1e; padding-bottom: 20px; }
+    .education-grid { grid-template-columns: 1fr; }
+    .contact-section { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 40px 32px; }
+  }
+
+  /* Light editorial theme */
+  :root {
+    --black: #fffaf2;
+    --yellow: #9b3f54;
+    --yellow-dim: #7d3345;
+    --yellow-pale: #f7dce2;
+    --white: #211b1d;
+    --gray: #f5ebe3;
+    --gray-mid: #e5d6cd;
+    --gray-light: #75696c;
+    --border: 1px solid #e5d6cd;
+  }
+
+  body {
+    background: #fffaf2;
+    color: #211b1d;
+  }
+
+  nav {
+    background: rgba(255, 250, 242, 0.94);
+    border-bottom-color: #e5d6cd;
+  }
+
+  .hero-desc,
+  .about-text p,
+  .contact-intro {
+    color: #5f5558;
+  }
+
+  .profile-wrapper::before,
+  .profile-wrapper::after {
+    border-color: #9b3f54;
+  }
+
+  .hero-stats,
+  .skills-grid,
+  .experience-list,
+  .projects-grid,
+  .education-grid,
+  .contact-list {
+    background: #e5d6cd;
+  }
+
+  .stat-item,
+  .skill-group,
+  .exp-item,
+  .project-card,
+  .edu-card,
+  .contact-row {
+    background: #fffaf2;
+  }
+
+  .exp-item:hover,
+  .project-card:hover,
+  .contact-row:hover {
+    background: #fbf1e9;
+  }
+
+  .section-rule,
+  .skill-group-title,
+  .exp-meta,
+  .project-stack {
+    border-color: #e5d6cd;
+  }
+
+  .section-rule {
+    background: #e5d6cd;
+  }
+
+  .skill-tag {
+    background: #f7eee7;
+    border-color: #dfd0c7;
+    color: #4e4548;
+  }
+
+  .skill-tag.highlight,
+  .exp-tag {
+    background: rgba(155, 63, 84, 0.08);
+    border-color: rgba(155, 63, 84, 0.25);
+    color: #7d3345;
+  }
+
+  .exp-desc,
+  .project-desc,
+  .edu-desc {
+    color: #665b5e;
+  }
+
+  .project-tech {
+    color: #75696c;
+    background: #f5ebe3;
+  }
+
+  .contact-icon {
+    background: rgba(155, 63, 84, 0.09);
+    border-color: rgba(155, 63, 84, 0.22);
+  }
+
+  .contact-detail-label {
+    color: #8d7e82;
+  }
+
+  .map-container {
+    background: #f5ebe3;
+    border-color: #e5d6cd;
+  }
+
+  footer {
+    background: #f5ebe3;
+    border-top-color: #e5d6cd;
+  }
+
+  .footer-left,
+  .footer-right {
+    color: #75696c;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">S.T.OLSON</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Expertise</a></li>
+    <li><a href="#experience">Approach</a></li>
+    <li><a href="#projects">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="yellow-bar"></div>
+
+<header class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Art &amp; Design / Fashion Design</div>
+    <h1 class="hero-name">Sean Thomas<br><span>Olson</span></h1>
+    <p class="hero-title">Fashion Designer &amp; Creative</p>
+    <p class="hero-desc">
+      Exploring clothing as a meeting point between form, identity, and culture.
+      I develop thoughtful fashion concepts through research, silhouette, material,
+      color, and considered visual storytelling.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#projects" class="btn-outline">View Portfolio</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="profile-wrapper" aria-label="Sean Thomas Olson monogram">
+      <div class="profile-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#f8e8df,#ead5ce);color:var(--yellow);font-family:'Space Mono',monospace;font-size:64px;font-weight:700;letter-spacing:-0.08em;">STO</div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">01</span>
+        <span class="stat-label">Vision</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">03</span>
+        <span class="stat-label">Disciplines</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">∞</span>
+        <span class="stat-label">Ideas</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="section-header">
+    <span class="section-tag">// 01</span>
+    <h2 class="section-title">About Me</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm Sean Thomas Olson, a <strong>fashion designer and multidisciplinary creative</strong>
+        interested in the relationship between clothing, character, and contemporary culture.
+      </p>
+      <p>
+        My process begins with observation and research, then moves through drawing, collage,
+        fabric exploration, draping, and refinement. I look for the tension between structure
+        and movement, restraint and expression, familiarity and surprise.
+      </p>
+      <p>
+        I approach each project as a complete visual world. Silhouette, fabrication, finish,
+        styling, and presentation work together to communicate one clear point of view.
+      </p>
+      <p>
+        I am drawn to collaborative environments where ideas can evolve through critique,
+        experimentation, and skilled making. The goal is work that feels distinctive,
+        purposeful, and alive on the body.
+      </p>
+    </div>
+    <div class="about-sidebar">
+      <div class="info-card">
+        <div class="info-card-label">Name</div>
+        <div class="info-card-value">Sean Thomas Olson</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Industry</div>
+        <div class="info-card-value">Art &amp; Design / Fashion Design</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Email</div>
+        <div class="info-card-value"><a href="mailto:paulsiddiqui449449@outlook.com">paulsiddiqui449449@outlook.com</a></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Focus</div>
+        <div class="info-card-value">Concept development, apparel design &amp; visual direction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-header">
+    <span class="section-tag">// 02</span>
+    <h2 class="section-title">Creative Expertise</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Design Development</div>
+      <div class="skill-list">
+        <span class="skill-tag highlight">Concept Development</span>
+        <span class="skill-tag highlight">Fashion Illustration</span>
+        <span class="skill-tag">Moodboards</span>
+        <span class="skill-tag">Silhouette Exploration</span>
+        <span class="skill-tag">Color Direction</span>
+        <span class="skill-tag">Collection Planning</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Garment &amp; Material</div>
+      <div class="skill-list">
+        <span class="skill-tag highlight">Draping</span>
+        <span class="skill-tag highlight">Textile Research</span>
+        <span class="skill-tag">Construction Awareness</span>
+        <span class="skill-tag">Fabric Sourcing</span>
+        <span class="skill-tag">Fit &amp; Proportion</span>
+        <span class="skill-tag">Detail Development</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Visual Communication</div>
+      <div class="skill-list">
+        <span class="skill-tag highlight">Art Direction</span>
+        <span class="skill-tag highlight">Styling</span>
+        <span class="skill-tag">Editorial Concepts</span>
+        <span class="skill-tag">Presentation Design</span>
+        <span class="skill-tag">Brand Storytelling</span>
+        <span class="skill-tag">Portfolio Curation</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Creative Practice</div>
+      <div class="skill-list">
+        <span class="skill-tag highlight">Research</span>
+        <span class="skill-tag highlight">Iteration</span>
+        <span class="skill-tag">Trend Awareness</span>
+        <span class="skill-tag">Critical Thinking</span>
+        <span class="skill-tag">Collaboration</span>
+        <span class="skill-tag">Creative Problem Solving</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-header">
+    <span class="section-tag">// 03</span>
+    <h2 class="section-title">Design Approach</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="experience-list">
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">01 — Discover</div>
+        <div class="exp-company">Research &amp; Context</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Build the visual world</div>
+        <p class="exp-desc">
+          Each project starts with cultural references, material research, image collection,
+          and close observation. Themes are distilled into a focused narrative that can guide
+          every later decision.
+        </p>
+        <div class="exp-tags">
+          <span class="exp-tag">Research</span>
+          <span class="exp-tag">Narrative</span>
+          <span class="exp-tag">Mood</span>
+          <span class="exp-tag">Color</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">02 — Develop</div>
+        <div class="exp-company">Form &amp; Material</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Translate ideas into garments</div>
+        <p class="exp-desc">
+          Sketching, draping, and material experiments turn the initial concept into a coherent
+          family of silhouettes. Proportion, movement, texture, and construction are refined
+          through deliberate iteration.
+        </p>
+        <div class="exp-tags">
+          <span class="exp-tag">Sketching</span>
+          <span class="exp-tag">Draping</span>
+          <span class="exp-tag">Textiles</span>
+          <span class="exp-tag">Iteration</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">03 — Refine</div>
+        <div class="exp-company">Edit &amp; Resolve</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Create a clear point of view</div>
+        <p class="exp-desc">
+          The strongest ideas are edited into a unified collection. Details, finishes, styling,
+          and presentation are resolved so the final work communicates with clarity and impact.
+        </p>
+        <div class="exp-tags">
+          <span class="exp-tag">Editing</span>
+          <span class="exp-tag">Fit</span>
+          <span class="exp-tag">Styling</span>
+          <span class="exp-tag">Presentation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-header">
+    <span class="section-tag">// 04</span>
+    <h2 class="section-title">Selected Directions</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-type">Collection Concept</div>
+      <div class="project-name">Structure / Movement</div>
+      <p class="project-desc">
+        An exploration of garments that balance controlled tailoring with fluid motion,
+        using contrast in weight, line, and volume to shape the body in motion.
+      </p>
+      <div class="project-stack">
+        <span class="project-tech">Silhouette</span>
+        <span class="project-tech">Draping</span>
+        <span class="project-tech">Tailoring</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-type">Textile Study</div>
+      <div class="project-name">Surface / Memory</div>
+      <p class="project-desc">
+        Material-led research into texture, layering, wear, and repair—treating the fabric
+        surface as a record of touch, time, and personal history.
+      </p>
+      <div class="project-stack">
+        <span class="project-tech">Textiles</span>
+        <span class="project-tech">Layering</span>
+        <span class="project-tech">Hand Finish</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-type">Visual Direction</div>
+      <div class="project-name">Dress / Identity</div>
+      <p class="project-desc">
+        A visual story examining how styling, gesture, and clothing construct character,
+        bringing garment design and image-making together in one cohesive language.
+      </p>
+      <div class="project-stack">
+        <span class="project-tech">Art Direction</span>
+        <span class="project-tech">Styling</span>
+        <span class="project-tech">Editorial</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-header">
+    <span class="section-tag">// 05</span>
+    <h2 class="section-title">Creative Focus</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="education-grid">
+    <div class="edu-card">
+      <div class="edu-year">FORM</div>
+      <div class="edu-degree">Silhouette &amp; Proportion</div>
+      <div class="edu-school">Designing for the body</div>
+      <p class="edu-desc">
+        Investigating how cut, volume, balance, and movement create character and shape
+        the experience of wearing a garment.
+      </p>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">MATERIAL</div>
+      <div class="edu-degree">Texture &amp; Construction</div>
+      <div class="edu-school">Letting materials lead</div>
+      <p class="edu-desc">
+        Using fabric behavior, surface, structure, and finish as active parts of the
+        design process rather than decisions made at the end.
+      </p>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">IMAGE</div>
+      <div class="edu-degree">Styling &amp; Art Direction</div>
+      <div class="edu-school">Building a complete visual language</div>
+      <p class="edu-desc">
+        Connecting garment, casting, styling, setting, and composition to present
+        fashion with a clear and memorable point of view.
+      </p>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">IMPACT</div>
+      <div class="edu-degree">Thoughtful Design</div>
+      <div class="edu-school">Purpose over excess</div>
+      <p class="edu-desc">
+        Favoring considered choices, adaptable ideas, and lasting creative value
+        throughout concept development and execution.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-header">
+    <span class="section-tag">// 06</span>
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="contact-section">
+    <div>
+      <p class="contact-intro">
+        For fashion, art, editorial, and creative collaboration inquiries, please reach out
+        by email. I welcome conversations about thoughtful projects and new creative directions.
+      </p>
+      <div class="contact-list">
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-value"><a href="mailto:paulsiddiqui449449@outlook.com">paulsiddiqui449449@outlook.com</a></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-2.83.48-5.56-.86-6.96-3.24L8.88 14c.3-.28.39-.72.22-1.09-.13-.29-.2-.59-.2-.91 0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1c0 .32-.07.62-.2.91-.17.37-.08.81.22 1.09l2.84 2.69A7.97 7.97 0 0 1 13 19.93z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Industry</div>
+            <div class="contact-detail-value">Art &amp; Design / Fashion Design</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="map-container" style="display:flex;align-items:center;justify-content:center;padding:48px;">
+      <div style="max-width:360px;">
+        <div class="hero-eyebrow">Creative inquiries</div>
+        <div class="section-title" style="font-size:32px;margin-bottom:20px;">Let's create something considered.</div>
+        <a href="mailto:paulsiddiqui449449@outlook.com" class="btn-primary">Email Sean</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">
+    &copy; 2026 <span>Sean Thomas Olson</span> · Fashion Designer &amp; Creative
+  </div>
+  <div class="footer-right">
+    paulsiddiqui449449@outlook.com
+  </div>
+</footer>
+
+</body>
+</html>
